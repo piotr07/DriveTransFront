@@ -1,0 +1,26 @@
+.detailsRow {
+    padding-top: 10px;
+}
+
+.details {
+    margin: 20px 0 0 20px;
+}
+
+.details-header {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+table {
+    margin-top: 10px;
+    height: 200px;
+    border-radius: 20px;
+    border-collapse: collapse;
+}
+
+
+td, th {
+    text-align: center;
+    border: 2px solid #00005d;
+    padding: 5px;
+}

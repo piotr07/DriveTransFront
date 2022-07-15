@@ -1,31 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {TestInterface} from "types";
+import React, {useState} from 'react';
+import {Header} from "./components/layout/Header";
+import {Map} from "./components/Map/Map";
+import {SearchContext} from "./contexts/search.context";
+import {Route, Routes} from "react-router-dom";
+import {AddForm} from "./components/AddForm/AddForm";
+import {Loading} from "./components/loading/Loading";
 
-function App() {
-  const foobar: TestInterface = {
-    x: 123,
-  }
+export const App = () => {
+    const [search, setSearch] = useState('');
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <SearchContext.Provider value={{search, setSearch}}>
+                <Header/>
+                <Routes>
+                    <Route path="/" element={<Map/>}/>
+                    <Route path="/add" element={<AddForm/>}/>
+                    <Route path="/loading/:id" element={<Loading/>}/>
+                </Routes>
+            </SearchContext.Provider>
+        </>
+    );
 }
-
-export default App;
