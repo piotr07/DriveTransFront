@@ -1,12 +1,10 @@
 import React, {SyntheticEvent, useState} from 'react';
-
 import './AddForm.css'
 import {Btn} from "../common/Btn";
 import {geocode} from "../../utils/geocoging";
 import {TYPE_OF_TRAILER} from "../../data/typeOfTrailer";
 import {TYPE_OF_CARGO} from "../../data/typeOfCargo";
-
-
+import {apiUrl} from "../../config/api";
 
 export const AddForm = () => {
     const [loading, setLoading] = useState(false);
@@ -31,7 +29,7 @@ export const AddForm = () => {
         try {
             const {lat, lon} = await geocode(form.pickup_address);
 
-            const res = await fetch(`http://localhost:3001/loading`, {
+            const res = await fetch(`${apiUrl}/loading`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

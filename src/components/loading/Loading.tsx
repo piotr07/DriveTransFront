@@ -6,6 +6,7 @@ import {LoadingTranslatedKeys} from "../../data/translator";
 import {LoadingUnits} from "../../data/units";
 import {Btn} from "../common/Btn";
 import {Spinner} from "../common/Spinner/Spinner";
+import {apiUrl} from "../../config/api";
 
 export const Loading = () => {
     const [loading, setLoading] = useState<LoadingEntity | null>(null);
@@ -13,7 +14,7 @@ export const Loading = () => {
 
     useEffect(() => {
         (async () => {
-            const res = await fetch(`http://localhost:3001/loading/${params.id}`);
+            const res = await fetch(`${apiUrl}/${params.id}`);
             const data = await res.json();
             setLoading(data);
         })();

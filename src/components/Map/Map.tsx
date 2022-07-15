@@ -3,10 +3,10 @@ import {MapContainer, Marker, Popup, TileLayer} from "react-leaflet";
 import '../../utils/fix-map-icon';
 import {SearchContext} from "../../contexts/search.context";
 import {SimpleLoadingEntity} from 'types';
-
 import 'leaflet/dist/leaflet.css';
 import './Map.css';
 import { SingleLoading } from "./SingleLoading";
+import {apiUrl} from "../../config/api";
 
 export const Map = () => {
     const {search} = useContext(SearchContext);
@@ -15,7 +15,7 @@ export const Map = () => {
     useEffect(() => {
 
         (async () => {
-            const res = await fetch(`http://localhost:3001/loading/search/${search}`);
+            const res = await fetch(`${apiUrl}/loading/search/${search}`);
             const data = await res.json();
             setLoadings(data);
         })();

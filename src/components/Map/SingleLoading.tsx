@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { LoadingEntity } from "types";
 import {Btn} from "../common/Btn";
 import {Spinner} from "../common/Spinner/Spinner";
+import {apiUrl} from "../../config/api";
 
 interface Props {
     id: string;
@@ -12,7 +13,7 @@ export const SingleLoading = (props: Props) => {
 
     useEffect(() => {
         (async () => {
-            const res = await fetch(`http://localhost:3001/loading/${props.id}`);
+            const res = await fetch(`${apiUrl}/loading/${props.id}`);
             const data = await res.json();
             setLoading(data);
         })();
